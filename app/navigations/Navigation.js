@@ -11,14 +11,53 @@ import Stores from "../screens/Stores";
 import Favorites from "../screens/Favorites";
 import Topstores from "../screens/Topstores";
 import Search from "../screens/Search";
-import Account from "../screens/Account";
+import Account from "../screens/account/Account";
+import { Icon } from "react-native-elements";
 
 const Tab = createBottomTabNavigator();
 
 export default function Navigation() {
+  const screenOptions = (route, color) => {
+    let iconName;
+    switch (route.name) {
+      case "stores":
+        iconName = "compass-outline";
+        break;
+      case "favorites":
+        iconName = "heart-outline";
+        break;
+      case "topstores":
+        iconName = "star-outline";
+        break;
+      case "search":
+        iconName = "magnify";
+        break;
+      case "account":
+        iconName = "home-outline";
+        break;
+
+      default:
+        break;
+    }
+    return (
+      <Icon
+        type="material-community"
+        name={iconName}
+        fontSize={22}
+        color={color}
+      />
+    );
+  };
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator
+        initialRouteName="stores"
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ color }) => screenOptions(route, color),
+          tabBarActiveTintColor: "#a17dc3",
+          tabBarInactiveTintColor: "#442484",
+        })}
+      >
         <Tab.Screen
           name="stores"
           component={Stores}
