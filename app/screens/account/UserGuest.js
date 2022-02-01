@@ -1,26 +1,32 @@
 import React from "react";
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
-import Loading from "../../components/Loading";
+import { Button } from "react-native-elements";
+import { useNavigation } from "@react-navigation/native";
+// import Loading from "../../components/Loading";
 
-import Logo from "../../assets/RestaurantLogo.png";
+import Logo from "../../../assets/RestaurantLogo.png";
 
 export default function UserGuest() {
+  const navigation = useNavigation();
   return (
-    <View>
+    <>
       <ScrollView centerContent style={styles.viewBody}>
         <Image source={Logo} resizeMode="contain" style={styles.image} />
-        <Text>Bienvenido a OferToYou</Text>
-        <Text>
-          No te pierdas las ofertas las ofertas, que estan cerca de ti regitrate
-          y podras encontrar miles de ofertas para invertir de forma inteligente
-          tu dinero!
+        <Text style={styles.title}>Bienvenido a OferToYou</Text>
+        <Text style={styles.text}>
+          No te pierdas las ofertas, que estan cerca de ti regitrate y podras
+          encontrar miles de ofertas para invertir de forma inteligente tu
+          dinero!
         </Text>
-      </ScrollView>
 
-      {/* TODO */}
-      {/* video 34 */}
-      {/* <Loading isVisible={true} text="Cargando.." /> */}
-    </View>
+        <Button
+          title="Ver tu perfil"
+          buttonStyle={styles.btnStyle}
+          containerStyle={styles.btncontainer}
+          onPress={() => navigation.navigate("login")}
+        />
+      </ScrollView>
+    </>
   );
 }
 
@@ -32,6 +38,27 @@ const styles = StyleSheet.create({
     height: 300,
     width: "100%",
     marginVertical: 10,
+    marginBottom: 40,
+  },
+  text: {
     textAlign: "center",
+    marginBottom: 20,
+  },
+  title: {
+    fontWeight: "bold",
+    fontSize: 19,
+    marginBottom: 20,
+    textAlign: "center",
+  },
+  viewBtn: {
+    flex: 1,
+    alignItems: "center",
+  },
+  btnStyle: {
+    backgroundColor: "#a17dc3",
+    alignItems: "center",
+  },
+  btncontainer: {
+    width: "100%",
   },
 });
