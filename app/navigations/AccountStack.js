@@ -3,6 +3,7 @@ import React from "react";
 
 import Account from "../screens/account/Account";
 import Login from "../screens/account/Login";
+import Register from "../screens/account/Register";
 
 const Stack = createStackNavigator();
 
@@ -12,12 +13,21 @@ export default function AccountStack() {
       <Stack.Screen
         name="cuentas"
         component={Account}
-        options={{ title: "Cuenta" }}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="login"
         component={Login}
-        options={{ title: "Iniciar Sesión" }}
+        options={{
+          title: "Iniciar Sesión",
+          headerShown: false,
+          headerStyle: { backgroundColor: "rgba(0,0,0,0)" },
+        }}
+      />
+      <Stack.Screen
+        name="register"
+        component={Register}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );

@@ -27,3 +27,13 @@ const app = initializeApp(firebaseConfig);
 export const getCurrentUser = () => {
   return firebase.auth().currentUser;
 };
+
+export const registerUser = async (email, password) => {
+  const result = { statusResponse: true, error: null };
+  try {
+    await firebase.auth().registerUser(email, password);
+  } catch (error) {
+    result.error = "Correo Registrado";
+  }
+  return result;
+};

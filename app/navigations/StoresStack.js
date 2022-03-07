@@ -11,7 +11,7 @@ export default function StoresStack() {
       <Stack.Screen
         name="stores"
         component={Stores}
-        options={{ title: "Tiendas" }}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );

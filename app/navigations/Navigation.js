@@ -12,7 +12,8 @@ import Favorites from "../screens/Favorites";
 import Topstores from "../screens/Topstores";
 import Search from "../screens/Search";
 import Account from "../screens/account/Account";
-import { Icon } from "react-native-elements";
+import { colors, Icon } from "react-native-elements";
+//import Layout from "../../assets/layoutOfferToYou.png";
 
 const Tab = createBottomTabNavigator();
 
@@ -54,13 +55,13 @@ export default function Navigation() {
         initialRouteName="stores"
         screenOptions={({ route }) => ({
           tabBarIcon: ({ color }) => screenOptions(route, color),
-          tabBarActiveTintColor: "#a17dc3",
-          tabBarInactiveTintColor: "#442484",
+          tabBarActiveTintColor: "#70aad4",
+          tabBarInactiveTintColor: "#1071b8",
         })}
       >
         <Tab.Screen
           name="stores"
-          component={Stores}
+          component={StoresStack}
           options={{ title: "Tiendas" }}
         />
         <Tab.Screen
@@ -80,8 +81,15 @@ export default function Navigation() {
         />
         <Tab.Screen
           name="account"
-          component={Account}
-          options={{ title: "Cuentas" }}
+          component={AccountStack}
+          options={{
+            headerShown: false,
+            title: "Cuentas",
+            // headerStyle: {
+            //   backgroundColor: "rgba(0,0,0,0)",
+            // },
+            // headerTintColor: "#fff",
+          }}
         />
       </Tab.Navigator>
     </NavigationContainer>
